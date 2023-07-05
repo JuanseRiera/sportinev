@@ -1,12 +1,12 @@
 <div class="p-3 h-screen">
-  <div class="h-20 pb-3 flex gap-10 justify-between items-center px-5">
+  <div class="pb-3 flex gap-10 justify-between items-center px-5">
     <div routerLink="/">
       <svg class="fill-orange-300 h-10 w-40">
         <use xlink:href="assets/sprite.svg#sportinev-icon"></use>
       </svg>
     </div>
     <nav>
-      <ul class="list-none text-lg text-orange-300 cursor-pointer flex gap-5">
+      <ul class="list-none text-lg text-orange-300 cursor-pointer flex items-center gap-5">
         <li
           class="hover:text-orange-400 hover:underline"
           [routerLink]="['contact-us']"
@@ -25,20 +25,26 @@
         >
           Log in
         </li>
+        <button class="rounded-full border-full p-2 dark:hover:bg-zinc-700 hover:bg-slate-200" (click)="toogleDarkTheme()">
+          <svg class="fill-orange-300 h-5 w-5">
+            <use *ngIf="isDarkThemeEnable()" xlink:href="assets/sprite.svg#icon-sun-fill"></use>
+            <use *ngIf="!isDarkThemeEnable()" xlink:href="assets/sprite.svg#icon-moon-fill"></use>
+          </svg>
+        </button>
       </ul>
     </nav>
   </div>
   <div
-    class="h-[calc(100%-5rem)] bg-secondary rounded-2xl bg-gradient-to-br from-spyellow to-orange-300 p-10"
+    class="h-[calc(100%-3.2rem)] bg-secondary rounded-2xl bg-gradient-to-br from-spyellow to-orange-300 p-10"
   >
-    <div class="h-[calc(100%-5rem)] flex items-center">
+    <div class="h-[calc(100%-3.2rem)] flex items-center">
       <div>
         <div class="text-5xl uppercase text-slate-600">
           <p class="font-light">All your sports</p>
           <p class="font-bold">in one place</p>
         </div>
         <div class="text-lg text-slate-600 mt-2">
-          <p>Find or plan sports events near you.</p>
+          <p>Find sports events near you.</p>
         </div>
         <div class="mt-5">
           <button
