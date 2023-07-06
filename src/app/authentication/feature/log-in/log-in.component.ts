@@ -6,14 +6,13 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <p>
-      log-in works!
-    </p>
-  `,
-  styles: [
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class LogInComponent {
+    <div class="p-5">
+      <h1 class="text-4xl font-bold text-slate-600">Log in</h1>
 
-}
+      <Span>ENJOY</Span>
+    </div>
+  `,
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class LogInComponent {}

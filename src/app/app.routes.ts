@@ -9,18 +9,27 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'log-in',
+    path: '',
     loadComponent: () =>
-      import('./authentication/feature/log-in/log-in.component').then(
-        (c) => c.LogInComponent
+      import('./authentication/ui/layout/layout.component').then(
+        (c) => c.LayoutComponent
       ),
-  },
-  {
-    path: 'sign-up',
-    loadComponent: () =>
-      import('./authentication/feature/sign-up/sign-up.component').then(
-        (c) => c.SignUpComponent
-      ),
+    children: [
+      {
+        path: 'log-in',
+        loadComponent: () =>
+          import('./authentication/feature/log-in/log-in.component').then(
+            (c) => c.LogInComponent
+          ),
+      },
+      {
+        path: 'sign-up',
+        loadComponent: () =>
+          import('./authentication/feature/sign-up/sign-up.component').then(
+            (c) => c.SignUpComponent
+          ),
+      },
+    ],
   },
   {
     path: 'contact-us',
