@@ -1,18 +1,54 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [CommonModule],
+  imports: [ReactiveFormsModule, FormlyModule],
   template: `
     <div class="p-5">
-      <h1 class="text-4xl font-bold text-slate-600">Log in</h1>
+      <h1 class="text-2xl font-bold mb-2 text-orange-300 dark:text-gray-100">
+        Log in
+      </h1>
+      <span class="text-gray-600 dark:text-gray-100 font-bold">
+        Please enter your credentials
+      </span>
 
-      <Span>ENJOY</Span>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(model)" class="mt-5">
+        <formly-form [form]="form" [fields]="fields" [model]="model" />
+        <button type="submit" class="btn btn-primary w-full mt-5">
+          Submit
+        </button>
+      </form>
     </div>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LogInComponent {}
+export class LogInComponent {
+  form = new FormGroup({});
+  model = { email: '' };
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'email',
+      type: 'input',
+      props: {
+        placeholder: 'Email',
+        required: true,
+      },
+    },
+    {
+      key: 'password',
+      type: 'password',
+      props: {
+        placeholder: 'Password',
+        required: true,
+      },
+    },
+  ];
+
+  onSubmit(model: any) {
+    console.log(model);
+  }
+}

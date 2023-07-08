@@ -1,0 +1,52 @@
+.fieldContainer {
+  container: layout / inline-size;
+  margin: var(--field-layout-margin);
+}
+
+.container__layout {
+  display: flex;
+  align-items: baseline;
+}
+
+.container__layout:has(.label__layout > *){
+  gap: 1rem;
+}
+
+.label__layout {
+  width: 25%;
+  font-weight: 500;
+}
+
+.content__layout {
+  width: 75%;
+}
+
+@container layout (width < 768px) {
+  .label__layout {
+    width: 20%;
+  }
+  
+  .content__layout {
+    width: 80%;
+  }
+}
+
+@container layout (width < 650px) {
+  .container__layout {
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+
+  .container__layout:has(.label__layout > *){
+    gap: 0.6rem;
+  }
+
+  .label__layout {
+    width: 100%;
+  }
+
+  .content__layout {
+    width: 100%;
+  }
+}
